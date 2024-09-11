@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { BiSolidSun, BiSolidMoon } from "react-icons/bi";
+
 const NavLinks = [
     {
         id:"1",
@@ -23,9 +25,9 @@ const NavLinks = [
     },
 ]
 
-const Navbar = () => {
+const Navbar = ({theme, setTheme}) => {
   return (
-    <nav className='shadow-md'>
+    <nav className='shadow-md bg-white dark:bg-dark dark:text-white duration-300'>
         <div className="container">
             <div className="flex justify-between items-center">
                 <div>
@@ -42,7 +44,7 @@ const Navbar = () => {
                                     key={data.id}
                                 >
                                     <a 
-                                className='inline-block py-2 
+                                className='py-2 
                                 hover:border-b-2 hover:text-primary hover:border-primary transition-colors duration-500 text-lg font-medium'
                                 href={data.link}>
                                     {data.name}
@@ -51,6 +53,22 @@ const Navbar = () => {
                             ))
                         }
                     </ul>
+                </div>
+                <div>
+                    {
+                        theme === "dark"?(
+                            <BiSolidSun
+                                onClick={()=>setTheme("light")}
+                                className='text-2xl'
+                            />
+                        ):(
+                            <BiSolidMoon
+                                onClick={()=>setTheme("dark")}
+                                className='text-2xl'
+                            /> 
+                        )
+                    }
+                    
                 </div>
             </div>
         </div>
